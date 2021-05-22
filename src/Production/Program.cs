@@ -4,10 +4,11 @@ namespace shop
 {
     class Program
     {
-        static void Main(string[] args)
+       public bool o = true;
+        public static void Main(string[] args)
         {
-            int i;
-            for(i = 0; i < 2 ;i++){
+            bool i = true;
+            while(i == true){
                 Console.WriteLine("1. Van Halen: 5150.  150,-");
                 Console.WriteLine("2. Guns N' Roses: Appetite for Destruction.  200,-");
                 Console.WriteLine("3. Blink 182: Enema of the State.  175,-");
@@ -20,23 +21,14 @@ namespace shop
 
                 string output = sum > 0 ? "děkuji za nákup" : "tohle bohužel nebude stačit" ;
                 Console.WriteLine(output);
-                int o;
-                for(o = 0; o < 1; o++){
-                    Console.WriteLine("Chcete si koupit ještě něco ? (ano/ne)");
-                    string again = Console.ReadLine();
-                    if(again == "ano"){
-                        i = 0;
-                    }
-                    else if(again == "ne"){
-                        Console.WriteLine("Děkuji přijďte zas");
-                        Console.ReadLine();
-                        o = 1;
-                    }
-                    else{
-                        Console.WriteLine("Prosím vyjadřujte se jako člověk");
-                        o = 0;
-                    }
+
+                Console.WriteLine("Chcete si koupit ještě něco ? (ano/ne)");
+                
+                while(o == true){
+                string again = Console.ReadLine();
+                shop(again);
                 }
+                Console.ReadLine();
             }
         }
         public static string items(string item){
@@ -56,6 +48,21 @@ namespace shop
                 return "ERROR!";
             }
 
+        }
+        public static string shop(string again){
+            
+                if(again == "ano"){
+                    o = false;
+                    return  "0";
+                }
+                else if(again == "ne"){
+                    o = false;
+                    return "Děkuji přijďte zas";
+                }
+                else{
+                    return "Prosím vyjadřujte se jako člověk";
+                }
+            }
         }
 
     }
