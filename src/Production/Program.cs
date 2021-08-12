@@ -7,8 +7,8 @@ namespace shop
        public bool o = true;
         public static void Main(string[] args)
         {
-            bool i = true;
-            while(i == true){
+            bool a = true;
+            while(a == true){
                 Console.WriteLine("1. Van Halen: 5150.  150,-");
                 Console.WriteLine("2. Guns N' Roses: Appetite for Destruction.  200,-");
                 Console.WriteLine("3. Blink 182: Enema of the State.  175,-");
@@ -19,16 +19,26 @@ namespace shop
                 var cost = int.Parse(items(item));
                 int sum = int.Parse(Console.ReadLine()) - cost;
 
-                string output = sum > 0 ? "děkuji za nákup" : "tohle bohužel nebude stačit" ;
+                string output = sum >= 0 ? "děkuji za nákup" : "tohle bohužel nebude stačit" ;
                 Console.WriteLine(output);
 
                 Console.WriteLine("Chcete si koupit ještě něco ? (ano/ne)");
-                
-                while(o == true){
+                bool b = true;
+                while(b == true){
                 string again = Console.ReadLine();
-                shop(again);
+                
+                if(shop(again) == "Děkuji přijďte zas"){
+                    a = false;
+                    b = false;
+                    Console.ReadLine();
                 }
-                Console.ReadLine();
+                else if(shop(again) == "Prosím vyjadřujte se jako člověk"){
+
+                }
+                else{
+                    b = false;
+                }}
+                
             }
         }
         public static string items(string item){
@@ -52,11 +62,9 @@ namespace shop
         public static string shop(string again){
             
                 if(again == "ano"){
-                    o = false;
                     return  "0";
                 }
                 else if(again == "ne"){
-                    o = false;
                     return "Děkuji přijďte zas";
                 }
                 else{
@@ -65,5 +73,4 @@ namespace shop
             }
         }
 
-    }
 }
